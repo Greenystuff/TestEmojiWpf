@@ -1,0 +1,88 @@
+﻿<Window x:Class="TestEmojiRichTextBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+        xmlns:local="clr-namespace:TestEmojiRichTextBox"
+        mc:Ignorable="d"
+        Title="Test Emoji.wpf" Height="450" Width="800">
+    <Grid>
+        <DockPanel Grid.Row="1"
+                   FocusManager.IsFocusScope="True"
+                   FocusManager.FocusedElement="{Binding ElementName=rtbEditor}"
+                   Width="auto">
+            <ToolBar DockPanel.Dock="Top">
+                <ToggleButton Command="EditingCommands.ToggleBold"
+                              Name="btnBold">
+                    <fa:IconImage Icon="Bold"
+                                  Width="16"
+                                  Height="16"
+                                  Margin="3,0"
+                                  SnapsToDevicePixels="True"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.ToggleItalic"
+                              Name="btnItalic">
+                    <fa:IconImage Icon="Italic"
+                                  Width="16"
+                                  Height="16"
+                                  Margin="3,0"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.ToggleUnderline"
+                              Name="btnUnderline">
+                    <fa:IconImage Icon="Underline"
+                                  Width="16"
+                                  Height="16"
+                                  Margin="3,0"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <Separator />
+                <ToggleButton Command="EditingCommands.AlignLeft"
+                              Name="btnLeft">
+                    <fa:IconImage Icon="AlignLeft"
+                                  Width="16"
+                                  Height="16"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.AlignCenter"
+                              Name="btnCenter">
+                    <fa:IconImage Icon="AlignCenter"
+                                  Width="16"
+                                  Height="16"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.AlignRight"
+                              Name="btnRight">
+                    <fa:IconImage Icon="AlignRight"
+                                  Width="16"
+                                  Height="16"
+                                  Foreground="Black" />
+                </ToggleButton>
+                <Separator />
+                <emoji:Picker x:Name="EditorPicker"
+                              FontSize="20" />
+                <Separator />
+                <ComboBox Name="cmbFontFamily"
+                          Width="150"
+                          SelectedIndex="152"
+                          SelectionChanged="cmbFontFamily_SelectionChanged" />
+                <ComboBox Name="cmbFontSize"
+                          Width="50"
+                          SelectedIndex="8"
+                          IsEditable="True"
+                          TextBoxBase.TextChanged="cmbFontSize_TextChanged" />
+            </ToolBar>
+            <emoji:RichTextBox Name="rtbEditor"
+                               FontSize="20"
+                               SelectionChanged="rtbEditor_SelectionChanged"
+                               emoji:Behaviors.EmojiRendering="true"
+                               SpellCheck.IsEnabled="False"
+                               IsUndoEnabled="true"
+                               AcceptsTab="True"
+                               IsInactiveSelectionHighlightEnabled="True" />
+        </DockPanel>
+    </Grid>
+</Window>
