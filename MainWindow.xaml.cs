@@ -23,6 +23,11 @@ namespace TestEmojiRichTextBox
         public MainWindow()
         {
             InitializeComponent();
+
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+
+            EditorPicker.Picked += (o, e) => rtbEditor.CaretPosition.InsertTextInRun(e.Emoji);
         }
 
         private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
