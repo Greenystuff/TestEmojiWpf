@@ -82,7 +82,7 @@
                                SpellCheck.IsEnabled="False"
                                IsUndoEnabled="true"
                                AcceptsTab="True"
-                               IsInactiveSelectionHighlightEnabled="True" />
+                               IsInactiveSelectionHighlightEnabled="True"/>
         </DockPanel>
     </Grid>
 </Window>
